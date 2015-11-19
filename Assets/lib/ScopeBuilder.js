@@ -1,5 +1,9 @@
 ﻿#pragma strict
 
+
+// TODO This is completely deprecated. 
+// Plesase use the `Helpers.getRelativeCoordsFromParams()` and `Helpers.convertRelToAbsCoords()`
+
 class ScopeBuilder {
 	static var centerX :int;
 	static var centerZ :int;
@@ -56,7 +60,7 @@ class ScopeBuilder {
 			for(var tile in tiles) {
 				if (tile && tile.movable) {
 
-					var neighbor = new Node(tile.x, tile.z);
+					var neighbor = new Node(tile.coord.x, tile.coord.z);
 					neighbor.G = node.G + 1;
 
 					if (neighbor.G <= scope) {

@@ -1,20 +1,23 @@
 ﻿#pragma strict
 
-// Tile is a DS for map
+/*
+	Tile is the unit of Map.
+	@(x, z) Coords, TODO need to be converted to Vector3
+	@setType(type_number): pass in type number (e.g. `Tile.land`) to render the tile type
+*/
 class Tile {
 
 	static var land = 0;
 	static var wall = 1;
 	
-	var x : int;
-	var z : int;
+	
+	var coord :Vector3;
 	
 	var type = land;
 	var movable = true;
-	
+
 	function Tile (x : int, z : int) {
-		this.x = x;
-		this.z = z;
+		this.coord = Vector3(x, 0, z);
 	}
 	
 	function setType (n :int) {

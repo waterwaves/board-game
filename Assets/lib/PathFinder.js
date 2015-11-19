@@ -51,13 +51,13 @@ class PathFinder {
 		tiles[3] = _map.getTileAt(node.x, node.z - 1);
 		
 		for(var tile in tiles) {
-			if (tile && tile.movable && !_shadowMap[tile.x, tile.z]) {
-				_shadowMap[tile.x, tile.z] = 1;
+			if (tile && tile.movable && !_shadowMap[tile.coord.x, tile.coord.z]) {
+				_shadowMap[tile.coord.x, tile.coord.z] = 1;
 				
-				var neighbor = new Node(tile.x, tile.z);
+				var neighbor = new Node(tile.coord.x, tile.coord.z);
 				neighbor.from = node;
 				neighbor.G = node.G + 10;
-				neighbor.H = Mathf.Sqrt(Mathf.Pow(tile.x - end.x, 2) + Mathf.Pow(tile.z - end.z, 2)) * 10;
+				neighbor.H = Mathf.Sqrt(Mathf.Pow(tile.coord.x - end.x, 2) + Mathf.Pow(tile.coord.z - end.z, 2)) * 10;
 				neighbor.F = neighbor.G + neighbor.H;
 				_readyNodes.Add(neighbor);
 			}
